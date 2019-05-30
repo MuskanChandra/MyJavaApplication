@@ -65,9 +65,9 @@ public class CalculatorMain {
 		frame.getContentPane().add(textDisplay);
 		textDisplay.setColumns(10);
 		
-		JButton btnB = new JButton("B");
+		JButton btnB = new JButton("\uF0E7");
 		btnB.setBackground(new Color(240, 230, 140));
-		btnB.setFont(new Font("Tekton Pro Cond", Font.BOLD, 35));
+		btnB.setFont(new Font("Wingdings", Font.PLAIN, 22));
 		btnB.setBounds(10, 79, 55, 47);
 		frame.getContentPane().add(btnB);
 		
