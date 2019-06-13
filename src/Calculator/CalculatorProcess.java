@@ -2,12 +2,14 @@ package Calculator;
 
 public class CalculatorProcess 
 {
-	double firstNum;
+	
+	
+	/* double firstNum;
 	double secondNum;
 	String operator= "";
-	String Displaystr = "";
+	String answer = "";
 	
-	public void partition(String op)
+	 public void partition(String op)
 	{
 		firstNum = Double.parseDouble(Displaystr);
 		operator = op;
@@ -41,5 +43,5 @@ public class CalculatorProcess
 	public void GetsecondNum()
 	{
 		secondNum = Double.parseDouble(Displaystr);
-	}
+	}*/
 }

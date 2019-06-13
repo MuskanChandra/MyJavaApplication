@@ -15,6 +15,14 @@ public class CalculatorMain {
 
 	private JFrame frame;
 	private JTextField textDisplay;
+	
+	
+	
+	double firstNum;
+	double secondNum;
+	double result;
+	String operators;
+	String answer;
 
 	/**
 	 * Launch the application.
@@ -39,13 +47,15 @@ public class CalculatorMain {
 		initialize();
 	}
 	
-	CalculatorProcess process = new CalculatorProcess();
+	/* CalculatorProcess process = new CalculatorProcess(); */
 	
 	
-	  public void show() 
-	  { 
-		  textDisplay.setText(process.Displaystr); 
-	  }
+	/*
+	 * public void show() 
+	 * {
+	 *  textDisplay.setText(process.Displaystr); 
+	 *  }
+	 */
 	 
 
 	/**
@@ -66,8 +76,21 @@ public class CalculatorMain {
 		textDisplay.setColumns(10);
 		
 		JButton btnB = new JButton("\uF0E7");
+		btnB.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				String backspace = null;
+				if(textDisplay.getText().length() > 0)
+				{
+					StringBuilder strB = new StringBuilder(textDisplay.getText());
+					strB.deleteCharAt(textDisplay.getText().length() - 1);
+					backspace = strB.toString();
+					textDisplay.setText(backspace);
+				}
+			}
+		});
 		btnB.setBackground(new Color(240, 230, 140));
-		btnB.setFont(new Font("Wingdings", Font.PLAIN, 22));
+		btnB.setFont(new Font("Wingdings", Font.PLAIN, 20));
 		btnB.setBounds(10, 79, 55, 47);
 		frame.getContentPane().add(btnB);
 		
@@ -84,6 +107,14 @@ public class CalculatorMain {
 		frame.getContentPane().add(btnC);
 		
 		JButton btnPer = new JButton("%");
+		btnPer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				firstNum = Double.parseDouble(textDisplay.getText());
+				textDisplay.setText("");
+				operators = "%";
+			}
+		});
 		btnPer.setFont(new Font("Tekton Pro Cond", Font.BOLD, 35));
 		btnPer.setBackground(new Color(245, 222, 179));
 		btnPer.setBounds(140, 79, 55, 47);
@@ -93,9 +124,14 @@ public class CalculatorMain {
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-								
-				 JButton newbtn= (JButton) e.getSource();
-				process.partition(newbtn.getText());
+				
+				firstNum = Double.parseDouble(textDisplay.getText());
+				textDisplay.setText("");
+				operators = "+";
+				/*
+				 * JButton newbtn= (JButton) e.getSource(); 
+				 * process.partition(newbtn.getText());
+				 */
 			}
 		});
 		btnAdd.setFont(new Font("Tekton Pro Cond", Font.BOLD, 35));
@@ -107,8 +143,14 @@ public class CalculatorMain {
 		btnSub.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				process.partition(btnSub.getText());
-				textDisplay.setText(String.valueOf(process.cprocess()));
+				
+				firstNum = Double.parseDouble(textDisplay.getText());
+				textDisplay.setText("");
+				operators = "-";
+				/*
+				 * process.partition(btnSub.getText());
+				 * textDisplay.setText(String.valueOf(process.cprocess()));
+				 */
 			}
 		});
 		btnSub.setFont(new Font("Tekton Pro Cond", Font.BOLD, 35));
@@ -121,10 +163,11 @@ public class CalculatorMain {
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				
-				process.Displaystr +="9";
-				show();
-				// String EnterNumber = textDisplay.getText() + btn9.getText();
-				// textDisplay.setText(EnterNumber);
+				/*
+				 * process.Displaystr +="9"; show();
+				 */
+				 String EnterNumber = textDisplay.getText() + btn9.getText();
+				 textDisplay.setText(EnterNumber);
 			}
 		});
 		btn9.setFont(new Font("Tekton Pro Cond", Font.BOLD, 35));
@@ -137,11 +180,12 @@ public class CalculatorMain {
 			public void actionPerformed(ActionEvent arg0) 
 			
 		{
-				process.Displaystr +="8";
-				show();
+				/*
+				 * process.Displaystr +="8"; show()
+				 */;
 				
-				// String EnterNumber = textDisplay.getText() + btn8.getText();
-				// textDisplay.setText(EnterNumber);
+				 String EnterNumber = textDisplay.getText() + btn8.getText();
+				 textDisplay.setText(EnterNumber);
 		}
 		});
 		btn8.setFont(new Font("Tekton Pro Cond", Font.BOLD, 35));
@@ -153,10 +197,11 @@ public class CalculatorMain {
 		btn7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				process.Displaystr +="7";
-				show();
-				//String EnterNumber = textDisplay.getText() + btn7.getText();
-				//textDisplay.setText(EnterNumber);
+				/*
+				 * process.Displaystr +="7"; show();
+				 */
+				String EnterNumber = textDisplay.getText() + btn7.getText();
+				 textDisplay.setText(EnterNumber);
 			}
 		});
 		btn7.setFont(new Font("Tekton Pro Cond", Font.BOLD, 35));
@@ -168,8 +213,15 @@ public class CalculatorMain {
 		btnMul.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				process.partition(btnMul.getText());
-				textDisplay.setText(String.valueOf(process.cprocess()));
+				
+			
+				firstNum = Double.parseDouble(textDisplay.getText());
+				textDisplay.setText("");
+				operators = "*";
+				/*
+				 * process.partition(btnMul.getText());
+				 * textDisplay.setText(String.valueOf(process.cprocess()));
+				 */
 			}
 		});
 		btnMul.setFont(new Font("Tekton Pro Cond", Font.BOLD, 35));
@@ -182,10 +234,11 @@ public class CalculatorMain {
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				
-				process.Displaystr += "6";
-				show();
-				// String EnterNumber = textDisplay.getText() + btn6.getText();
-				// textDisplay.setText(EnterNumber);
+				/*
+				 * process.Displaystr += "6"; show();
+				 */
+				 String EnterNumber = textDisplay.getText() + btn6.getText();
+				 textDisplay.setText(EnterNumber);
 			}
 		});
 		btn6.setFont(new Font("Tekton Pro Cond", Font.BOLD, 35));
@@ -198,10 +251,11 @@ public class CalculatorMain {
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				
-				process.Displaystr +="5";
-				show();
-				// String EnterNumber = textDisplay.getText() + btn5.getText();
-				// textDisplay.setText(EnterNumber);
+				/*
+				 * process.Displaystr +="5"; show();
+				 */
+				 String EnterNumber = textDisplay.getText() + btn5.getText();
+				 textDisplay.setText(EnterNumber);
 			}
 		});
 		btn5.setFont(new Font("Tekton Pro Cond", Font.BOLD, 35));
@@ -214,10 +268,11 @@ public class CalculatorMain {
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				
-				process.Displaystr +="4";
-				show();
-				// String EnterNumber = textDisplay.getText() + btn4.getText();
-				// textDisplay.setText(EnterNumber);
+				/*
+				 * process.Displaystr +="4"; show();
+				 */
+				 String EnterNumber = textDisplay.getText() + btn4.getText();
+				 textDisplay.setText(EnterNumber);
 			}
 		});
 		btn4.setFont(new Font("Tekton Pro Cond", Font.BOLD, 35));
@@ -229,8 +284,14 @@ public class CalculatorMain {
 		btnDiv.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				process.partition(btnDiv.getText());
-				textDisplay.setText(String.valueOf(process.cprocess()));
+				
+				firstNum = Double.parseDouble(textDisplay.getText());
+				textDisplay.setText("");
+				operators = "/";
+				/*
+				 * process.partition(btnDiv.getText());
+				 * textDisplay.setText(String.valueOf(process.cprocess()));
+				 */
 			}
 		});
 		btnDiv.setFont(new Font("Tekton Pro Cond", Font.BOLD, 35));
@@ -243,10 +304,11 @@ public class CalculatorMain {
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				
-				process.Displaystr += "3";
-				show();
-				// String EnterNumber = textDisplay.getText() + btn3.getText();
-				// textDisplay.setText(EnterNumber);
+				/*
+				 * process.Displaystr += "3"; show();
+				 */
+				 String EnterNumber = textDisplay.getText() + btn3.getText();
+				  textDisplay.setText(EnterNumber);
 			}
 		});
 		btn3.setFont(new Font("Tekton Pro Cond", Font.BOLD, 35));
@@ -259,10 +321,11 @@ public class CalculatorMain {
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				
-				process.Displaystr += "2";
-				show();
-				// String EnterNumber = textDisplay.getText() + btn2.getText();
-				// textDisplay.setText(EnterNumber);
+				/*
+				 * process.Displaystr += "2"; show();
+				 */
+				 String EnterNumber = textDisplay.getText() + btn2.getText();
+				 textDisplay.setText(EnterNumber);
 			}
 		});
 		btn2.setFont(new Font("Tekton Pro Cond", Font.BOLD, 35));
@@ -275,10 +338,11 @@ public class CalculatorMain {
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				
-				process.Displaystr += "1";
-				show();
-				// String EnterNumber = textDisplay.getText() + btn1.getText();
-				// textDisplay.setText(EnterNumber);
+				/*
+				 * process.Displaystr += "1"; show();
+				 */
+				 String EnterNumber = textDisplay.getText() + btn1.getText();
+				 textDisplay.setText(EnterNumber);
 			}
 		});
 		btn1.setFont(new Font("Tekton Pro Cond", Font.BOLD, 35));
@@ -290,8 +354,46 @@ public class CalculatorMain {
 		btnEnter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0)
 			{
-				process.GetsecondNum();
-				textDisplay.setText(String.valueOf(process.cprocess()));
+				
+				secondNum = Double.parseDouble(textDisplay.getText());
+				if(operators == "+")
+				{
+					result = firstNum + secondNum;
+					answer = String.format("%.2f", result);
+					textDisplay.setText(answer);
+				}
+				
+				else if(operators == "-")
+				{
+					result = firstNum - secondNum;
+					answer = String.format("%.2f", result);
+					textDisplay.setText(answer);
+				}
+				
+				else if(operators == "*")
+				{
+					result = firstNum * secondNum;
+					answer = String.format("%.2f", result);
+					textDisplay.setText(answer);
+				}
+				
+				else if(operators == "/")
+				{
+					result = firstNum / secondNum;
+					answer = String.format("%.2f", result);
+					textDisplay.setText(answer);
+				}
+				
+				else if(operators == "%")
+				{
+					result = firstNum % secondNum;
+					answer = String.format("%.2f", result);
+					textDisplay.setText(answer);
+				}
+				/*
+				 * process.GetsecondNum();
+				 * textDisplay.setText(String.valueOf(process.cprocess()));
+				 */
 			}
 		});
 		btnEnter.setFont(new Font("Tekton Pro Cond", Font.BOLD, 35));
@@ -300,6 +402,15 @@ public class CalculatorMain {
 		frame.getContentPane().add(btnEnter);
 		
 		JButton btnPo = new JButton(".");
+		btnPo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				if(!textDisplay.getText().contains("."))
+				{
+					textDisplay.setText(textDisplay.getText() + btnPo.getText());
+				}
+			}
+		});
 		btnPo.setFont(new Font("Tekton Pro Cond", Font.BOLD, 35));
 		btnPo.setBackground(new Color(224, 255, 255));
 		btnPo.setBounds(75, 311, 55, 47);
@@ -309,10 +420,11 @@ public class CalculatorMain {
 		btn0.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				process.Displaystr += "0";
-				show();
-				// String EnterNumber = textDisplay.getText() + btn0.getText();
-				// textDisplay.setText(EnterNumber);
+				/*
+				 * process.Displaystr += "0"; show();
+				 */
+				 String EnterNumber = textDisplay.getText() + btn0.getText();
+				 textDisplay.setText(EnterNumber);
 			}
 		});
 		btn0.setFont(new Font("Tekton Pro Cond", Font.BOLD, 35));
